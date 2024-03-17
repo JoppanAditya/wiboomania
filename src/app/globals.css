@@ -2,32 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*,
+*::before,
+*::after {
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.collection-card:hover img {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.comment-card:hover div {
+  background-color: #ff9f1c;
+}
+
+.comment-card:hover p {
+  background-color: #344552;
+  color: #fdfffc;
+}
+
+.slick-slide > div {
+  margin: 0 0.5rem;
+}
+
+.loading {
+  width: 100px;
+  height: 100px;
+  display: grid;
+}
+
+.loading::before,
+.loading::after {
+  content: "";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side, #03b5aa 92%, #0000);
+  background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%, var(--c) 0 50%;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  animation: s2 1s infinite;
+}
+
+.loading::before {
+  margin: 8px;
+  filter: hue-rotate(-180deg) saturate(1);
+  background-size: 16px 16px;
+  animation-timing-function: linear;
+  -webkit-filter: hue-rotate(-140deg);
+}
+
+@keyframes s2 {
+  100% {
+    transform: rotate(0.5turn);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (min-width: 1024px) {
+  .collection-card:hover div {
+    background-color: rgba(3, 181, 170, 0.8);
+    opacity: 1;
+    opacity: 1;
   }
 }
